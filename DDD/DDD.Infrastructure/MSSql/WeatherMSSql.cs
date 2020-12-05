@@ -1,6 +1,7 @@
 ﻿using DDD.Domain.Entities;
 using DDD.Domain.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace DDD.Infrastructure.MSSql
@@ -17,27 +18,24 @@ from Weather
 where AreaId = @AreaId
 order by DataDate desc
 ";
-
-            using (var connection = new SqlConnection(MSSqlHelper.ConnectionString))
-            using (var command = new SqlCommand(sql, connection))
-            {
-                connection.Open();
-
-                command.Parameters.AddWithValue("@AreaId", areaId);
-                using (var reader = command.ExecuteReader())
+            return MSSqlHelper.QuerySingle<WeatherEntity>(
+                sql,
+                new List<SqlParameter>
                 {
-                    while (reader.Read())
-                    {
-                        return new WeatherEntity(
-                            areaId,
-                            Convert.ToDateTime(reader["DataDate"]),
-                            Convert.ToInt32(reader["Condition"]),
-                            Convert.ToInt32(reader["Temperature"])
-                            );
-                    }
-                }
-                return null;
-            }
+                    new SqlParameter("@AreaId", areaId)
+                }.ToArray() ,
+                reader =>
+                {
+                    return new WeatherEntity(
+                        areaId,
+                        Convert.ToDateTime(reader["DataDate"]),
+                        Convert.ToInt32(reader["Condition"]),
+                        Convert.ToInt32(reader["Temperature"])
+                        );
+                },
+                null
+                );
+
         }
 
     }
