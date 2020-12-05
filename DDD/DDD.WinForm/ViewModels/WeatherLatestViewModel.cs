@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using DDD.Domain.Entities;
 using DDD.Domain.Repositories;
 using DDD.Infrastructure.MSSql;
 
@@ -10,15 +11,23 @@ namespace DDD.WinForm.ViewModels
 
     {
         private IWeatherRepository _weather;
+        private IAreasRepository _areas;
 
         public WeatherLatestViewModel()
-            : this(new WeatherMSSql())
+            : this(new WeatherMSSql(),null)
         {
         }
 
-        public WeatherLatestViewModel(IWeatherRepository weather)
+        public WeatherLatestViewModel(IWeatherRepository weather,
+            IAreasRepository areas)
         {
             _weather = weather;
+            _areas = areas;
+
+            foreach (var area in _areas.GetData())
+            {
+                Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
+            }
         }
         private string _areaIdText = string.Empty;
         public string AreaIdText
@@ -59,6 +68,9 @@ namespace DDD.WinForm.ViewModels
                 SetProperty(ref _temperature, value);
             }
         }
+
+        public BindingList<AreaEntity> Areas { get; set; }
+        = new BindingList<AreaEntity>();
 
         public void Serch()
         {           

@@ -35,8 +35,8 @@
             this.DataDateLabel = new System.Windows.Forms.Label();
             this.ConditionLabel = new System.Windows.Forms.Label();
             this.TemperatureLabel = new System.Windows.Forms.Label();
-            this.AreaIdTextBox = new System.Windows.Forms.TextBox();
             this.LatestButton = new System.Windows.Forms.Button();
+            this.AreaIdTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -102,13 +102,6 @@
             this.TemperatureLabel.TabIndex = 6;
             this.TemperatureLabel.Text = "label7";
             // 
-            // AreaIdTextBox
-            // 
-            this.AreaIdTextBox.Location = new System.Drawing.Point(92, 38);
-            this.AreaIdTextBox.Name = "AreaIdTextBox";
-            this.AreaIdTextBox.Size = new System.Drawing.Size(100, 19);
-            this.AreaIdTextBox.TabIndex = 7;
-            // 
             // LatestButton
             // 
             this.LatestButton.Location = new System.Drawing.Point(198, 34);
@@ -118,6 +111,13 @@
             this.LatestButton.Text = "直近値";
             this.LatestButton.UseVisualStyleBackColor = true;
             this.LatestButton.Click += new System.EventHandler(this.LatestButton_Click);
+            // 
+            // AreaIdTextBox
+            // 
+            this.AreaIdTextBox.Location = new System.Drawing.Point(92, 38);
+            this.AreaIdTextBox.Name = "AreaIdTextBox";
+            this.AreaIdTextBox.Size = new System.Drawing.Size(100, 19);
+            this.AreaIdTextBox.TabIndex = 7;
             // 
             // WeatherLatestView
             // 
@@ -149,8 +149,8 @@
         private System.Windows.Forms.Label DataDateLabel;
         private System.Windows.Forms.Label ConditionLabel;
         private System.Windows.Forms.Label TemperatureLabel;
-        private System.Windows.Forms.TextBox AreaIdTextBox;
         private System.Windows.Forms.Button LatestButton;
+        private System.Windows.Forms.TextBox AreaIdTextBox;
     }
 }
 
