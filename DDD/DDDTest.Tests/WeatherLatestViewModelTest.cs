@@ -40,7 +40,7 @@ namespace DDDTest.Tests
             areasMock.Setup(x => x.GetData()).Returns(areas);
 
 
-            var viewModel = new WeatherLatestViewModel(weatherMock.Object,areasMock.Object);
+            var viewModel = new DDD.WinForm.ViewModels.WeatherLatestViewModel(weatherMock.Object, areasMock.Object);
             Assert.IsNull( viewModel.SelectedAreaId);
             Assert.AreEqual("", viewModel.DataDateText);
             Assert.AreEqual("", viewModel.ConditionText);

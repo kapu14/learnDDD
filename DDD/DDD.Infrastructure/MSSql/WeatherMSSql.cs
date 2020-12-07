@@ -8,6 +8,7 @@ namespace DDD.Infrastructure.MSSql
 {
     public class WeatherMSSql : IWeatherRepository
     {
+
         public WeatherEntity GetLatest(int areaId)
         {
             string sql = @"
@@ -37,6 +38,29 @@ order by DataDate desc
                 );
 
         }
+        public IReadOnlyList<WeatherEntity> GetData()
+        {
+            string sql = @"
+select A.AreaId,
+       isnull(B.AreaName,'') as AreaName,
+       A.DataDate,
+       A.Condition,
+       A.Temperature
+from Weather A
+left join Areas B
+on A.AreaId = B.AreaId
+";
 
+            return MSSqlHelper.Query(sql,
+                reader =>
+                {
+                    return new WeatherEntity(
+                        Convert.ToInt32(reader["AreaID"]),
+                        Convert.ToString(reader["AreaName"]),
+                        Convert.ToDateTime(reader["DataDate"]),
+                        Convert.ToInt32(reader["Condition"]),
+                        Convert.ToSingle(reader["Temperature"]));
+                });
+        }
     }
 }
