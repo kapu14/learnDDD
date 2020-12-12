@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CCAEF23-9C2C-443F-963A-CFC9D86B6878}</ProjectGuid>
+    <ProjectGuid>{2E403F6F-401F-4D57-8374-1FBF1169C9F0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DDD.WinForm</RootNamespace>
-    <AssemblyName>DDD.WinForm</AssemblyName>
+    <RootNamespace>MYDDD.WinForm</RootNamespace>
+    <AssemblyName>MYDDD.WinForm</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,28 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Common\CommonConst.cs" />
+    <Compile Include="Common\CommonFunc.cs" />
+    <Compile Include="Data\WeatherSQL.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\WeatherLatestViewModel.cs" />
-    <Compile Include="ViewModels\WeatherListViewModel.cs" />
-    <Compile Include="ViewModels\WeatherListViewModelWeather.cs" />
-    <Compile Include="ViewModels\WeatherSaveViewModel.cs" />
     <Compile Include="Views\WeatherLatestView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\WeatherLatestView.Designer.cs">
       <DependentUpon>WeatherLatestView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\WeatherListView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\WeatherListView.Designer.cs">
-      <DependentUpon>WeatherListView.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Views\WeatherLatestView.resx">
-      <DependentUpon>WeatherLatestView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -77,8 +67,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\WeatherListView.resx">
-      <DependentUpon>WeatherListView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\WeatherLatestView.resx">
+      <DependentUpon>WeatherLatestView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,15 +84,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DDD.Domain\DDD.Domain.csproj">
-      <Project>{5eb9bccc-a1c3-4d33-860e-a5544deadce4}</Project>
-      <Name>DDD.Domain</Name>
+    <ProjectReference Include="..\MYDDD.Domain\MYDDD.Domain.csproj">
+      <Project>{af194f5b-b762-45dd-976f-494e84e9af3b}</Project>
+      <Name>MYDDD.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj">
-      <Project>{FB001E36-D2B7-44ED-A2F9-25189C0225FA}</Project>
-      <Name>DDD.Infrastructure</Name>
+    <ProjectReference Include="..\MYDDD.Infrastructure\MYDDD.Infrastructure.csproj">
+      <Project>{18a4861e-d6e4-424e-a34c-8d9bdc1fdda6}</Project>
+      <Name>MYDDD.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

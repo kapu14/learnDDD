@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E59DA938-A96D-4478-A39A-D66473878890}</ProjectGuid>
+    <ProjectGuid>{626E99CA-8BF5-4EF9-8427-552A2FBC1398}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DDDTest.Tests</RootNamespace>
-    <AssemblyName>DDDTest.Tests</AssemblyName>
+    <RootNamespace>MYDDDTest.Tests</RootNamespace>
+    <AssemblyName>MYDDDTest.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -65,24 +65,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChainingAssertion.MSTest.cs" />
-    <Compile Include="UnitTest1.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TemperatureTest.cs" />
-    <Compile Include="WeatherSaveViewModelTest.cs" />
-    <Compile Include="WeatherListViewModelTest.cs" />
     <Compile Include="WeatherLatestViewModelTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DDD.Domain\DDD.Domain.csproj">
-      <Project>{5eb9bccc-a1c3-4d33-860e-a5544deadce4}</Project>
-      <Name>DDD.Domain</Name>
+    <ProjectReference Include="..\MYDDD.Domain\MYDDD.Domain.csproj">
+      <Project>{AF194F5B-B762-45DD-976F-494E84E9AF3B}</Project>
+      <Name>MYDDD.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DDD.WinForm\DDD.WinForm.csproj">
-      <Project>{8ccaef23-9c2c-443f-963a-cfc9d86b6878}</Project>
-      <Name>DDD.WinForm</Name>
+    <ProjectReference Include="..\MYDDD.Infrastructure\MYDDD.Infrastructure.csproj">
+      <Project>{18A4861E-D6E4-424E-A34C-8D9BDC1FDDA6}</Project>
+      <Name>MYDDD.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MYDDD.WinForm\MYDDD.WinForm.csproj">
+      <Project>{2E403F6F-401F-4D57-8374-1FBF1169C9F0}</Project>
+      <Name>MYDDD.WinForm</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
