@@ -41,9 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorys\IWeatherRepository.cs" />
+    <Compile Include="SQL\AreasSQL.cs" />
+    <Compile Include="SQL\SQLHelper.cs" />
+    <Compile Include="SQL\WeatherSQL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MYDDD.Domain\MYDDD.Domain.csproj">

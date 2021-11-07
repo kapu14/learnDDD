@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DDD.WinForm.ViewModels
 {
@@ -26,6 +22,10 @@ namespace DDD.WinForm.ViewModels
             }
             return true;
 
+        }
+        public virtual DateTime GetDateTime()
+        {
+            return DateTime.Now;
         }
     }
 }

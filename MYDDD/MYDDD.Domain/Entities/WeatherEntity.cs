@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MYDDD.Domain.ValueObjects;
+using System;
 
 
 namespace MYDDD.Domain.Entities
@@ -10,17 +11,26 @@ namespace MYDDD.Domain.Entities
                              DateTime dataDate,
                              int condition,
                              float temperature)
+            :this(areaId,string.Empty, dataDate, condition, temperature)
         {
-            AreaId = areaId;
+        }
+        public WeatherEntity(int areaId,
+                             string areaName,   
+                             DateTime dataDate,
+                             int condition,
+                             float temperature)
+        {
+            AreaId = new AreaId(areaId);
+            AreaName = areaName;
             DateDate = dataDate;
-            Condition = condition;
-            Temperature = temperature;
+            Condition = new Condition(condition);
+            Temperature = new Temperature(temperature);
 
         }
-
-        public int AreaId { get; }
+        public AreaId AreaId { get; }
+        public string AreaName { get; }
         public DateTime DateDate { get; }
-        public int Condition { get; }
-        public float Temperature { get; }
+        public Condition Condition { get; }
+        public Temperature Temperature { get; }
     }
 }

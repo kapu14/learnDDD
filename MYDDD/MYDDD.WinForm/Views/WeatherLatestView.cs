@@ -1,42 +1,53 @@
-﻿using MYDDD.WinForm.Common;
-using MYDDD.WinForm.Data;
+﻿using MYDDD.Domain.Entities;
+using MYDDD.Infrastructure.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace MYDDD.WinForm.Views
 {
     public partial class WeatherLatestView : Form
     {
-
+        private WeatherLatestViewModel _viewModel
+            = new WeatherLatestViewModel();
         public WeatherLatestView()
         {
             InitializeComponent();
+
+            this.AreasComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.AreasComboBox.DataBindings.Add(
+                "SelectedValue", _viewModel, nameof(_viewModel.selectedAreaId));
+
+            this.AreasComboBox.DataBindings.Add(
+                "Datasource", _viewModel, nameof(_viewModel.Areas));
+            this.AreasComboBox.ValueMember = nameof(AreaEntity.AreaId);
+            this.AreasComboBox.DisplayMember = nameof(AreaEntity.AreaName);
+
+
+            this.DataDateLabel.DataBindings.Add(
+                "Text", _viewModel, nameof(_viewModel.DataDateText));
+
+            this.ConditionLabel.DataBindings.Add(
+                "Text", _viewModel, nameof(_viewModel.ConditionText));
+
+            this.TemperatureLabel.DataBindings.Add(
+                "Text", _viewModel, nameof(_viewModel.TemperatureText));
+
         }
+
 
         private void LatestButton_Click(object sender, EventArgs e)
         {
 
-            var dt = WeatherSQL.GetLatest(Convert.ToInt32(this.AreaTextBox.Text));
-            if (dt.Rows.Count > 0)
-            {
-                DataDateLabel.Text = dt.Rows[0]["DataDate"].ToString();
-                ConditionLabel.Text = dt.Rows[0]["Condition"].ToString();
-                TemperatureLabel.Text 
-                    = CommonFunc.RoundString(Convert.ToSingle(dt.Rows[0]["Temperature"]), 
-                    CommonConst.TemperatureDecimalPoint)
-                           + CommonConst.TemperatureUnitName;
-            }
+            _viewModel.Search();
 
         }
 
-
-
-
-}
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            using (var f = new WeatherListView())
+            {
+                f.ShowDialog();
+            }
+        }
+    }
 }
